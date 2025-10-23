@@ -21,6 +21,15 @@ export default function QuotesCarousel({ quotes }: QuotesCarouselProps) {
   
   const currentQuote = quotes[currentIndex];
   
+  // TypeScript safety check for array access
+  if (!currentQuote) {
+    return (
+      <div className="text-center py-12 text-gray-500">
+        Цитата не найдена
+      </div>
+    );
+  }
+  
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? quotes.length - 1 : prev - 1));
   };
